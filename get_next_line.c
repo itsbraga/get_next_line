@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/05/22 19:49:10 by panther          ###   ########.fr       */
+/*   Updated: 2023/05/23 17:43:28 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@
     retournée est négative, cela indique une erreur de lecture.
 */
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    char        *line;
+	char	*line;
 
-    if (fd < 0)
-        return (NULL);
+	if (fd < 0)
+		return (NULL);
 }

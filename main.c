@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 12:07:11 by panther           #+#    #+#             */
-/*   Updated: 2023/05/23 17:45:42 by annabrag         ###   ########.fr       */
+/*   Created: 2023/05/23 17:36:57 by annabrag          #+#    #+#             */
+/*   Updated: 2023/05/23 17:42:28 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+int	main(void)
+{
+	char	*line;
+	int		fd;
 
-char	*get_next_line(int fd);
-
-size_t	ft_strlen(char const *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_islinebreak(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-
-#endif
+	fd = open("anna.txt", O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		printf("%s", line);
+		free(line);
+	}
+	return (0);
+}
