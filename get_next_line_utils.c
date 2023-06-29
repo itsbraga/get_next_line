@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:14:37 by panther           #+#    #+#             */
-/*   Updated: 2023/05/23 17:45:07 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:35:48 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ size_t	ft_strlen(char const *s)
 		i++;
 	return (i);
 }
-
-// ft_strchr() recherche la première occurrence d'un caractère spécifié
-// dans une chaîne de caractères
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -45,46 +42,90 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char *line, char *buffer)
 {
-	char	*sub;
-	size_t	s_len;
-	size_t	i;
+	char	*line_read;
+	size_t	len_line;
+	size_t	len_buffer;
+	size_t	i;	
 
-	if (!s)
+	if (!line || !buffer)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if ((size_t)start > s_len)
-		start = s_len;
-	if (len > (s_len - start))
-		len = s_len - start;
-	sub = malloc(sizeof(char) * (len + 1));
-	if (!sub)
+	len_line = ft_strlen(line);
+	len_buffer = ft_strlen(buffer);
+	if (!(line_read = malloc(sizeof(char) * (len_line + len_buffer + 1))))
 		return (NULL);
-    i = 0;
-	while (s[start + i] && i < len)
+	i = 0;
+	while (i < len_line)
 	{
-		sub[i] = s[start + i];
+		line_read[i] = line[i];
 		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	i = 0;
+	while (i < len_buffer)
+	{
+		line_read[i] = buffer[i];
+		i++;
+	}
+	line_read[len_line + i] = '\0';
+	free(line);
+	return (line_read);
 }
 
-int	ft_islinebreak(char *s)
+char	*extract_line(char *line)
 {
-	int	i;
+	int		i;
+	char	*line_read;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	if (!line[i])
+		return (NULL);
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!(line_read = malloc(sizeof(char) * (i + 2))))
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
 	{
-		if (s[i] == "\n")
-			return (1);
+		line_read[i] = line[i];
 		i++;
 	}
-	return (0);
+	if (line[i] == '\n')
+	{
+		line_read[i] = line[i];
+		i++;
+	}
+	line_read[i] = '\0';
+	return (line_read);
 }
 
-char	*ft_strjoin(char *s1, char *s2);
+char	*update_line(char *line)
+{
+	int		i;
+	int		j;
+	size_t	len_line;
+	char	*updated;
+	
+	len_line = ft_strlen(line);
+	i = 0;
+	if (!line[i])
+	{
+		free(line);
+		return (NULL);
+	}
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!(updated = malloc(sizeof(char) * (len_line - i + 1))))
+		return (NULL);
+	i++;
+	j = 0;
+	while (line[i])
+	{
+		updated[j] = line[i];
+		i++;
+		j++;
+	}
+	updated[j] = '\0';
+	free(line);
+	return (updated);
+}
