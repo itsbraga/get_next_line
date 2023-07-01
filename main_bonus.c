@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 17:36:57 by annabrag          #+#    #+#             */
-/*   Updated: 2023/07/01 02:22:54 by panther          ###   ########.fr       */
+/*   Created: 2023/07/01 01:43:39 by panther           #+#    #+#             */
+/*   Updated: 2023/07/01 02:22:14 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	test_gnl(int fd, char const *current_file)
 {
 	char	*current_line;
 	int		line_counter;
-	int		read_bytes;
 
 	printf("Testing file %s\n", current_file);
 	line_counter = 0;

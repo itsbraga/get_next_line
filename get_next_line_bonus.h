@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 12:07:11 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:19:09 by panther          ###   ########.fr       */
+/*   Created: 2023/07/01 01:40:54 by panther           #+#    #+#             */
+/*   Updated: 2023/07/01 02:19:17 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 
 # define BUFFER_SIZE 6
 # define MAX_FD RLIMIT_NOFILE // ou 1024 + 1
+
+/*
+** Le descripteur de fichier va de 0 à OPEN_MAX (défini dans <limits.h>)
+** La valeur maximale du descripteur de fichier peut être obtenue avec :
+**
+** Mac : launchctl limit maxfiles
+** Linux : ulimit -n 
+*/
 
 size_t	ft_strlen(char const *s);
 char	*ft_strchr(const char *s, int c);
