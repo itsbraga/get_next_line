@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:07:11 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:19:09 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 02:38:06 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@
 # include <stdio.h> // to comment before pushing into vogsphere
 
 # define BUFFER_SIZE 6
-# define MAX_FD RLIMIT_NOFILE // ou 1024 + 1
-
-size_t	ft_strlen(char const *s);
+# define MAX_FD 1024 + 1 // RLIMIT_NOFILE
+ 
+size_t  ft_strlen(char const *s);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *line, char *buffer);
-char	*extract_line(char *line);
-char	*update_line(char *line);
-char	*use_read_on_line(int fd, char *line);
+char    *ft_strjoin(char *line, char *buffer);
+char    *extract_line(char *line);
+char    *update_line(char *line);
+char    *use_read_on_line(int fd, char *line);
 
-char	*get_next_line(int fd);
+char    *get_next_line(int fd);
 
 #endif

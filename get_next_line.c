@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:27:34 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 02:33:55 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void  ft_putstr_fd(char *s, int fd)
   }
 }
 
-static char  *use_read_on_line(int fd, char *line)
+char  *use_read_on_line(int fd, char *line)
 {
   char  *buffer;
   int   read_bytes;

@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 22:39:22 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:23:50 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 02:37:04 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,23 @@ void  ft_putstr_fd(char *s, int fd)
 
 static char    *use_read_on_line(int fd, char *line)
 {
-    char  *buffer;
-    int   read_bytes;
-    
-    if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char))))
-        return (NULL);
-    read_bytes = 1;
-    while (!ft_strchr(line, '\n') && read_bytes != 0)
+  char  *buffer;
+  int   read_bytes;
+  
+  if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char))))
+    return (NULL);
+  read_bytes = 1;
+  while (!ft_strchr(line, '\n') && read_bytes != 0)
+  {
+    read_bytes = read(fd, buffer, BUFFER_SIZE);
+    if (read_bytes == -1)
     {
-        read_bytes = read(fd, buffer, BUFFER_SIZE);
-        if (read_bytes == -1)
-        {
-            ft_putstr_fd("-----------\n An error happened\n", fd);
-            free(line);
-            return (NULL);
-        }
-        buffer[read_bytes] = '\0';
-        line = ft_strjoin(line, buffer);
+      ft_putstr_fd("-----------\n An error happened\n", fd);
+      free(line);
+      return (NULL);
+    }
+    buffer[read_bytes] = '\0';
+    line = ft_strjoin(line, buffer);
     }
     free(buffer);
     return (line);
@@ -53,14 +53,14 @@ static char    *use_read_on_line(int fd, char *line)
 char    *get_next_line(int fd)
 {
 	char        *read_line;
-    static char *line[MAX_FD];
+  static char *line[MAX_FD];
 
 	if ((fd < 0 || fd >= MAX_FD) || BUFFER_SIZE <= 0)
 		return (NULL);
-    line[fd] = use_read_on_line(fd, line[fd]);
-    if (!line[fd])
-        return (NULL);
-    read_line = extract_line(line[fd]);
-    line[fd] = update_line(line[fd]);
-    return (read_line);  
+  line[fd] = use_read_on_line(fd, line[fd]);
+  if (!line[fd])
+    return (NULL);
+  read_line = extract_line(line[fd]);
+  line[fd] = update_line(line[fd]);
+  return (read_line);  
 }

@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:40:54 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:19:17 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 02:37:31 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@
 ** Linux : ulimit -n 
 */
 
-size_t	ft_strlen(char const *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *line, char *buffer);
-char	*extract_line(char *line);
-char	*update_line(char *line);
-char	*use_read_on_line(int fd, char *line);
+size_t  ft_strlen(char const *s);
+char    *ft_strchr(const char *s, int c);
+char    *ft_strjoin(char *line, char *buffer);
+char    *extract_line(char *line);
+char    *update_line(char *line);
+char    *use_read_on_line(int fd, char *line);
 
-char	*get_next_line(int fd);
+char    *get_next_line(int fd);
 
 #endif
