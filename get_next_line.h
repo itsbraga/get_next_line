@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:07:11 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 11:10:47 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/03 17:30:24 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <sys/resource.h>
-# include <limits.h>
-# include <fcntl.h> // to comment before pushing into vogsphere
-# include <stdio.h> // to comment before pushing into vogsphere
+// # include <sys/resource.h>
+// # include <limits.h>
+// # include <fcntl.h> // to comment before pushing into vogsphere
+// # include <stdio.h> // to comment before pushing into vogsphere
+# include "colors.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 6
