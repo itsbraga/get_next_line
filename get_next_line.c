@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 13:14:46 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/03 14:36:45 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*get_next_line(int fd)
     return (NULL);
   read_line = extract_line(line);
   line = update_line(line);
-  return (read_line);  
+  return (read_line);
 }
 
 // int main(void)
