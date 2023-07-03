@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:33:55 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 13:14:46 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char  *use_read_on_line(int fd, char *line)
   char  *buffer;
   int   read_bytes;
   
-  if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+  buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+  if (!buffer)
     return (NULL);
   read_bytes = 1;
   while (!ft_strchr(line, '\n') && read_bytes != 0)
@@ -58,7 +59,7 @@ char  *use_read_on_line(int fd, char *line)
     if (read_bytes == -1)
     {
       ft_putstr_fd("-----------\n An error happened\n", fd);
-      free(line);
+      free(buffer);
       return (NULL);
     }
     buffer[read_bytes] = '\0';
@@ -83,33 +84,39 @@ char	*get_next_line(int fd)
   return (read_line);  
 }
 
-int main(void)
-{
-  char  *line;
-  int		i;
-  int		fd1;
-  int		fd2;
-  int		fd3;
+// int main(void)
+// {
+//   char  *line;
+//   int		i;
+//   int		fd1;
+//   int		fd2;
+//   int		fd3;
 
-  fd1 = open("tests/bigline_no_nl.txt", O_RDONLY);
-  fd2 = open("tests/bigline_with_nl.txt", O_RDONLY);
-  fd3 = open("tests/empty.txt", O_RDONLY);
-  i = 1;
-  while (i < 3)
-  {
-    line = get_next_line(fd1);
-    printf("line [%02d]: %s", i, line);
-    free(line);
-    line = get_next_line(fd2);
-    printf("line [%02d]: %s", i, line);
-    free(line);
-    line = get_next_line(fd3);
-    printf("line [%02d]: %s", i, line);
-    free(line);
-    i++;
-	}
-  close(fd1);
-  close(fd2);
-  close(fd3);
-  return (0);
-}
+//   fd1 = open("tests/bigline_no_nl.txt", O_RDONLY);
+//   fd2 = open("tests/bigline_with_nl.txt", O_RDONLY);
+//   fd3 = open("tests/empty.txt", O_RDONLY);
+//   i = 1;
+//   while (i < 5)
+//   {
+//     line = get_next_line(fd1);
+//     printf("---------------------------------------------------------------\n");
+//     printf("line [%02d]: %s", i, line);
+//     free(line);
+//     puts("\n");
+//     line = get_next_line(fd2);
+//     printf("---------------------------------------------------------------\n");
+//     printf("line [%02d]: %s", i, line);
+//     free(line);
+//     puts("\n");
+//     line = get_next_line(fd3);
+//     printf("---------------------------------------------------------------\n");
+//     printf("line [%02d]: %s", i, line);
+//     free(line);
+//     puts("\n");
+//     i++;
+// 	}
+//   close(fd1);
+//   close(fd2);
+//   close(fd3);
+//   return (0);
+// }

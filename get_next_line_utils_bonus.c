@@ -6,13 +6,13 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:45:53 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 01:58:37 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 11:39:56 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char const *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -24,11 +24,15 @@ size_t	ft_strlen(char const *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 	int	len;
 
+	if (!s)
+		return (NULL);
+	if (c == '\0')
+		return ((char *)s + ft_strlen(s));
 	len = 0;
 	while (s[len])
 		len++;
@@ -64,10 +68,10 @@ char	*ft_strjoin(char *line, char *buffer)
 	i = 0;
 	while (i < len_buffer)
 	{
-		read_line[i] = buffer[i];
+		read_line[len_line + i] = buffer[i];
 		i++;
 	}
-	read_line[len_line + i] = '\0';
+	read_line[len_line + len_buffer] = '\0';
 	free(line);
 	return (read_line);
 }

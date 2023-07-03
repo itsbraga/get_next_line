@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:36:57 by annabrag          #+#    #+#             */
-/*   Updated: 2023/07/01 02:22:54 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 12:50:26 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	test_gnl(int fd, char const *current_file)
 {
 	char	*current_line;
 	int		line_counter;
-	int		read_bytes;
 
 	printf("Testing file %s\n", current_file);
 	line_counter = 0;
@@ -29,7 +28,7 @@ static void	test_gnl(int fd, char const *current_file)
 		printf("LINE [%02d]: '%s'\n", line_counter, current_line);
 		free(current_line);
 	}
-	printf("LAST RETURN: %d\n", current_line);
+	printf("LAST RETURN: %s\n", current_line);
 	printf("---------------------------------------------------------------\n");
 	close(fd);
 }

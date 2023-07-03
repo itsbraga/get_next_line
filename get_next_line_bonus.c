@@ -6,7 +6,7 @@
 /*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 22:39:22 by panther           #+#    #+#             */
-/*   Updated: 2023/07/01 02:37:04 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/01 11:38:04 by panther          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ void  ft_putstr_fd(char *s, int fd)
   }
 }
 
-static char    *use_read_on_line(int fd, char *line)
+char    *use_read_on_line(int fd, char *line)
 {
   char  *buffer;
   int   read_bytes;
   
-  if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char))))
+  buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+  if (!buffer)
     return (NULL);
   read_bytes = 1;
   while (!ft_strchr(line, '\n') && read_bytes != 0)
@@ -40,7 +41,7 @@ static char    *use_read_on_line(int fd, char *line)
     if (read_bytes == -1)
     {
       ft_putstr_fd("-----------\n An error happened\n", fd);
-      free(line);
+      free(buffer);
       return (NULL);
     }
     buffer[read_bytes] = '\0';
