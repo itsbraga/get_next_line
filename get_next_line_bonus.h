@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:40:54 by panther           #+#    #+#             */
-/*   Updated: 2023/07/03 17:30:26 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/04 12:53:38 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
-// # include <sys/resource.h>
-// # include <limits.h>
+# include <limits.h>
 // # include <fcntl.h> // to comment before pushing into vogsphere
-// # include <stdio.h> // to comment before pushing into vogsphere
-# include "colors.h"
+// # include <stdio.h>
+// # include <sys/resource.h> // to use MAX_FD RLIMIT_NOFILE
+// # include "colors.h" // to enhance the main
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 6
-# endif
-
-# ifndef MAX_FD
-#  define MAX_FD RLIMIT_NOFILE
 # endif
 
 /*
@@ -37,13 +33,13 @@
 ** Linux : ulimit -n 
 */
 
-size_t  ft_strlen(char *s);
-char    *ft_strchr(char *s, int c);
-char    *ft_strjoin(char *line, char *buffer);
-char    *extract_line(char *line);
-char    *update_line(char *line);
-char    *use_read_on_line(int fd, char *line);
+size_t	ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *line, char *buffer);
+char	*extract_line(char *line);
+char	*update_line(char *line);
+char	*use_read_on_line(int fd, char *line);
 
-char    *get_next_line(int fd);
+char	*get_next_line(int fd);
 
 #endif

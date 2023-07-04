@@ -3,85 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/07/03 14:36:45 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/04 12:51:10 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*  Description:
-    Écrire une fonction qui retourne une ligne lue depuis un
-    descripteur de fichier.
-
-    Valeur de retour:
-    - Une string avec le contenu de la ligne lue, suivi d'un '\n' : 
-      comportement correct
-    - NULL : rien d’autre à lire ou une erreur s’est produite
-
-    HELP:
-    ssize_t read(int fd, void *buffer, size_t count);
-    
-    read() tente de lire jusqu'à count octets à partir du descripteur
-    de fichier spécifié, et les place dans le tampon (buffer).
-    Elle renvoie le nombre d'octets réellement lus. Si la valeur
-    retournée est négative, cela indique une erreur de lecture.
-*/
-
 #include "get_next_line.h"
 
-void  ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-  int i;
+	int	i;
 
-  if (!s)
-    return ;
-  i = 0;
-  while (s[i])
-  {
-    write(fd, &s[i], ft_strlen(s));
-    i++;
-  }
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], ft_strlen(s));
+		i++;
+	}
 }
 
-char  *use_read_on_line(int fd, char *line)
+char	*use_read_on_line(int fd, char *line)
 {
-  char  *buffer;
-  int   read_bytes;
-  
-  buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-  if (!buffer)
-    return (NULL);
-  read_bytes = 1;
-  while (!ft_strchr(line, '\n') && read_bytes != 0)
-  {
-    read_bytes = read(fd, buffer, BUFFER_SIZE);
-    if (read_bytes == -1)
-    {
-      ft_putstr_fd("-----------\n An error happened\n", fd);
-      free(buffer);
-      return (NULL);
-    }
-    buffer[read_bytes] = '\0';
-    line = ft_strjoin(line, buffer);
-  }
-  free(buffer);
-  return (line);
+	char	*buffer;
+	int		read_bytes;
+
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	read_bytes = 1;
+	while (!ft_strchr(line, '\n') && read_bytes != 0)
+	{
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes == -1)
+		{
+			ft_putstr_fd("-----------\n An error happened\n", fd);
+			free(buffer);
+			return (NULL);
+		}
+		buffer[read_bytes] = '\0';
+		line = ft_strjoin(line, buffer);
+	}
+	free(buffer);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	char        *read_line;
-  static char *line;
+	char		*read_line;
+	static char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-  line = use_read_on_line(fd, line);
-  if (!line)
-    return (NULL);
-  read_line = extract_line(line);
-  line = update_line(line);
-  return (read_line);
+	line = use_read_on_line(fd, line);
+	if (!line)
+		return (NULL);
+	read_line = extract_line(line);
+	line = update_line(line);
+	return (read_line);
 }
 
 // int main(void)
@@ -96,21 +78,27 @@ char	*get_next_line(int fd)
 //   fd2 = open("tests/bigline_with_nl.txt", O_RDONLY);
 //   fd3 = open("tests/empty.txt", O_RDONLY);
 //   i = 1;
-//   while (i < 5)
+//   while (i < 2)
 //   {
+//     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_no_nl.txt\n");
 //     line = get_next_line(fd1);
-//     printf("---------------------------------------------------------------\n");
-//     printf("line [%02d]: %s", i, line);
+//     printf(BOLD BRIGHT_PURPLE
+//"---------------------------------------------------------------\n");
+//     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
+//     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_with_nl.txt\n");
 //     line = get_next_line(fd2);
-//     printf("---------------------------------------------------------------\n");
-//     printf("line [%02d]: %s", i, line);
+//     printf(BOLD BRIGHT_PURPLE
+//"---------------------------------------------------------------\n");
+//     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
+//     printf(BOLD BRIGHT_BLUE "Testing file : tests/empty.txt\n");
 //     line = get_next_line(fd3);
-//     printf("---------------------------------------------------------------\n");
-//     printf("line [%02d]: %s", i, line);
+//     printf(BOLD BRIGHT_PURPLE
+//"---------------------------------------------------------------\n");
+//     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
 //     i++;

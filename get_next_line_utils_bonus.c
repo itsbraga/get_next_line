@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panther <panther@student.42.fr>            +#+  +:+       +#+        */
+/*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:45:53 by panther           #+#    #+#             */
-/*   Updated: 2023/07/03 15:39:52 by panther          ###   ########.fr       */
+/*   Updated: 2023/07/04 12:49:14 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,16 @@ char	*ft_strjoin(char *line, char *buffer)
 	}
 	if (!line || !buffer)
 		return (NULL);
-	if (!(read_line = malloc(sizeof(char) * (ft_strlen(line) + ft_strlen(buffer) + 1))))
+	read_line = malloc(sizeof(char) * (ft_strlen(line)
+				+ ft_strlen(buffer) + 1));
+	if (!read_line)
 		return (NULL);
 	i = -1;
 	while (++i < ft_strlen(line))
-	{
 		read_line[i] = line[i];
-	}
 	i = -1;
 	while (++i < ft_strlen(buffer))
-	{
 		read_line[ft_strlen(line) + i] = buffer[i];
-	}
 	read_line[ft_strlen(line) + ft_strlen(buffer)] = '\0';
 	free(line);
 	return (read_line);
@@ -81,7 +79,8 @@ char	*extract_line(char *line)
 		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
-	if (!(read_line = malloc(sizeof(char) * (i + 2))))
+	read_line = malloc(sizeof(char) * (i + 2));
+	if (!read_line)
 		return (NULL);
 	i = 0;
 	while (line[i] && line[i] != '\n')
@@ -104,24 +103,24 @@ char	*update_line(char *line)
 	int		j;
 	size_t	len_line;
 	char	*updated;
-	
-	len_line = ft_strlen(line);
-	i = 0;
-	if (!line[i])
+
+	if (!line)
 	{
 		free(line);
 		return (NULL);
 	}
+	len_line = ft_strlen(line);
+	i = 0;
 	while (line[i] && line[i] != '\n')
 		i++;
-	if (!(updated = malloc(sizeof(char) * (len_line - i + 1))))
+	if (line[i] == '\n')
+		i++;
+	updated = malloc(sizeof(char) * (len_line - i + 1));
+	if (!updated)
 		return (NULL);
-	i++;
 	j = 0;
 	while (line[i])
-	{
 		updated[j++] = line[i++];
-	}
 	updated[j] = '\0';
 	free(line);
 	return (updated);
