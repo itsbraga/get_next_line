@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:45:53 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 12:49:14 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:51:58 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*update_line(char *line)
 	size_t	len_line;
 	char	*updated;
 
-	if (!line)
+	if (!line || !line[0])
 	{
 		free(line);
 		return (NULL);
