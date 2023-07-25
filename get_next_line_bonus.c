@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 22:39:22 by panther           #+#    #+#             */
-/*   Updated: 2023/07/25 14:05:34 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:32:11 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line[fd] = use_read_on_line(fd, line[fd]);
 	if (!line[fd])
+	{
 		return (NULL);
+	}
 	read_line = extract_line(line[fd]);
 	line[fd] = update_line(line[fd]);
 	return (read_line);
@@ -58,38 +60,38 @@ char	*get_next_line(int fd)
 //   int		fd1;
 //   int		fd2;
 //   int		fd3;
-//
+
 //   fd1 = open("tests/bigline_no_nl.txt", O_RDONLY);
 //   fd2 = open("tests/bigline_with_nl.txt", O_RDONLY);
 //   fd3 = open("tests/empty.txt", O_RDONLY);
-//   i = 1;
-//   while (i < 2)
+//   i = 0;
+//   while (i < 3)
 //   {
 //     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_no_nl.txt\n");
 //     line = get_next_line(fd1);
 //     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
+// "---------------------------------------------------------------\n");
 //     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
 //     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_with_nl.txt\n");
 //     line = get_next_line(fd2);
 //     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
+// "---------------------------------------------------------------\n");
 //     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
 //     printf(BOLD BRIGHT_BLUE "Testing file : tests/empty.txt\n");
 //     line = get_next_line(fd3);
 //     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
+// "---------------------------------------------------------------\n");
 //     printf(RESET WHITE "line [%02d]: %s", i, line);
 //     free(line);
 //     puts("\n");
 //     i++;
-// 	}
-//   close(fd1);
-//   close(fd2);
-//   close(fd3);
-//   return (0);
+//     }
+//     close(fd1);
+//     close(fd2);
+//     close(fd3);
+//     return (0);
 // }

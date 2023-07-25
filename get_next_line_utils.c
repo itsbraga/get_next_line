@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:14:37 by panther           #+#    #+#             */
-/*   Updated: 2023/07/25 14:23:40 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:31:45 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ char	*update_line(char *line)
 	size_t	len_line;
 	char	*updated;
 
-	if (!line || !line[0])
+	i = 0;
+	if (!line[i])
 	{
 		free(line);
 		return (NULL);
 	}
 	len_line = ft_strlen(line);
-	i = 0;
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (line[i] == '\n')
