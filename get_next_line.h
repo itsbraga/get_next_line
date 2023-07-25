@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:07:11 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 12:54:22 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:25:04 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-// # include <fcntl.h> // to comment before pushing into vogsphere
+# include <fcntl.h>
 // # include <stdio.h>
 // # include "colors.h"
 

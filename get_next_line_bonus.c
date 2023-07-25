@@ -6,25 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 22:39:22 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 12:52:45 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:05:34 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], ft_strlen(s));
-		i++;
-	}
-}
 
 char	*use_read_on_line(int fd, char *line)
 {
@@ -40,7 +26,6 @@ char	*use_read_on_line(int fd, char *line)
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			ft_putstr_fd("-----------\n An error happened\n", fd);
 			free(buffer);
 			return (NULL);
 		}
@@ -56,7 +41,7 @@ char	*get_next_line(int fd)
 	char		*read_line;
 	static char	*line[1024];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line[fd] = use_read_on_line(fd, line[fd]);
 	if (!line[fd])

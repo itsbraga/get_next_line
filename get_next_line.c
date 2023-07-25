@@ -6,25 +6,11 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:36 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 12:51:10 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:03:22 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], ft_strlen(s));
-		i++;
-	}
-}
 
 char	*use_read_on_line(int fd, char *line)
 {
@@ -40,7 +26,6 @@ char	*use_read_on_line(int fd, char *line)
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			ft_putstr_fd("-----------\n An error happened\n", fd);
 			free(buffer);
 			return (NULL);
 		}
@@ -68,43 +53,19 @@ char	*get_next_line(int fd)
 
 // int main(void)
 // {
-//   char  *line;
-//   int		i;
-//   int		fd1;
-//   int		fd2;
-//   int		fd3;
+// 	char	*line;
+// 	int	fd;
 
-//   fd1 = open("tests/bigline_no_nl.txt", O_RDONLY);
-//   fd2 = open("tests/bigline_with_nl.txt", O_RDONLY);
-//   fd3 = open("tests/empty.txt", O_RDONLY);
-//   i = 1;
-//   while (i < 2)
-//   {
-//     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_no_nl.txt\n");
-//     line = get_next_line(fd1);
-//     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
-//     printf(RESET WHITE "line [%02d]: %s", i, line);
-//     free(line);
-//     puts("\n");
-//     printf(BOLD BRIGHT_BLUE "Testing file : tests/bigline_with_nl.txt\n");
-//     line = get_next_line(fd2);
-//     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
-//     printf(RESET WHITE "line [%02d]: %s", i, line);
-//     free(line);
-//     puts("\n");
-//     printf(BOLD BRIGHT_BLUE "Testing file : tests/empty.txt\n");
-//     line = get_next_line(fd3);
-//     printf(BOLD BRIGHT_PURPLE
-//"---------------------------------------------------------------\n");
-//     printf(RESET WHITE "line [%02d]: %s", i, line);
-//     free(line);
-//     puts("\n");
-//     i++;
+// 	fd = open("tests/figure.txt", O_RDONLY);
+// 	printf(BOLD BRIGHT_BLUE "Testing file : tests/figure.txt\n");
+// 	line = get_next_line(fd);
+// 	while (line)
+// 	{
+// 		printf(RESET WHITE "line : %s\n", line);
+// 		free(line);
+// 		line = get_next_line(fd);	
 // 	}
-//   close(fd1);
-//   close(fd2);
-//   close(fd3);
-//   return (0);
+// 	free(line);
+// 	close(fd);
+// 	return (0);
 // }

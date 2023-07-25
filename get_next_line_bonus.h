@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 01:40:54 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 12:53:38 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:25:19 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-// # include <fcntl.h> // to comment before pushing into vogsphere
+# include <fcntl.h>
 // # include <stdio.h>
 // # include <sys/resource.h> // to use MAX_FD RLIMIT_NOFILE
-// # include "colors.h" // to enhance the main
+// # include "colors.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 6

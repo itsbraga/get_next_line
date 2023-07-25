@@ -6,7 +6,7 @@
 /*   By: annabrag <annabrag@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:14:37 by panther           #+#    #+#             */
-/*   Updated: 2023/07/04 17:51:04 by annabrag         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:23:40 by annabrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,8 @@ char	*extract_line(char *line)
 	char	*read_line;
 
 	i = 0;
-	if (!line)
-	{
-		free(line);
+	if (!line[i])
 		return (NULL);
-	}
 	while (line[i] && line[i] != '\n')
 		i++;
 	read_line = malloc(sizeof(char) * (i + 2));
