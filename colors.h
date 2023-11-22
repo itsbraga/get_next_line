@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Colors.h                                           :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: art3mis <art3mis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 17:29:34 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/12/18 18:21:13 by mcombeau         ###   ########.fr       */
+/*   Updated: 2023/11/22 23:27:27 by art3mis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 
 # define RESET	"\e[0m"
 
-# define BOLD	"\e[1m"
-# define DIM	"\e[2m"
-# define ITAL	"\e[3m"
-# define ULINE	"\e[4m"
+# define BOLD	    "\e[1m"
+# define DIM	    "\e[2m"
+# define ITAL	    "\e[3m"
+# define UNDERLINE	"\e[4m"
 
-# define BLACK	"\e[30m"
-# define RED	"\e[31m"
-# define GREEN	"\e[32m"
-# define YELLOW	"\e[33m"
-# define BLUE	"\e[34m"
-# define PURPLE	"\e[35m"
-# define CYAN	"\e[36m"
-# define WHITE	"\e[37m"
+# define BLACK      "\e[30m"
+# define GRAY       "\e[90m"
+# define RED        "\e[31m"
+# define GREEN      "\e[32m"
+# define YELLOW     "\e[33m"
+# define ORANGE     "\e[38;5;208m"
+# define BLUE       "\e[34m"
+# define PURPLE     "\e[35m"
+# define PINK       "\033[38;2;255;182;193m"
+# define CYAN       "\e[36m"
+# define WHITE      "\e[37m"
 
 # define BRIGHT_BLACK	"\e[90m"
+# define LIGHT_GRAY     "\e[37m"
 # define BRIGHT_RED		"\e[91m"
 # define BRIGHT_GREEN	"\e[92m"
 # define BRIGHT_YELLOW	"\e[93m"
